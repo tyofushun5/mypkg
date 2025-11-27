@@ -1,16 +1,21 @@
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import Int16
+#from std_msgs.msg import Int16
+from person_msgs.msg import Person 
 
 rclpy.init()
 node = Node('talker')
-pub = node.create_publisher(Int16, "countup", 10)
+#pub = node.create_publisher(Int16, "countup", 10)
+pub = node.create_publisher(Person, "person", 10)
 n = 0
 
 def cb():
     global n
-    msg = Int16()
-    msg.data = n
+    #msg = Int16()
+    msg = Person()
+    msg.name = "福岡俊祐"
+    msg.age = n
+    #msg.data = n
     pub.publish(msg)
     n += 1
 
